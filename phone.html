@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;list-style:none;}
+        /*中间的div想自动撑开高度，必须给html,body{height:100%},以及他的父级：。box{height:100%;}*/
+        html,body{height:100%;}
+        .box{display:-webkit-box;
+            -webkit-box-orient:vertical;
+            height:100%;
+        }
+        .box header{height:40px;line-height:40px;background:#e0f2be;}
+        .box header{display:-webkit-box;}
+        .left,.right{width:15%;background:#C6E746;text-align:center;}
+        .box header .mid{-webkit-box-flex:1;background:#fff;}
+        .box .wrap{width:100%;background:#399;-webkit-box-flex:1;min-width:100px;min-height:100px;
+            line-height:300px;text-align:center;font-size:40px;}
+        .box footer{height:40px;line-height:40px;background:#C6E746;}
+        .box footer ul{}
+        .box footer ul li{width:25%;text-align:center;box-sizing:border-box;border-right:1px solid #fff;float:left;}
+    </style>
+</head>
+<body>
+<div class="box">
+    <header>
+        <div class="left">左</div>
+        <div class="mid"></div>
+        <div class="right">右</div>
+    </header>
+    <div class="wrap">这是中间内容</div>
+    <footer>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </footer>
+</div>
+</body>
+</html>
