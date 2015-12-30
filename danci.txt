@@ -1,0 +1,363 @@
+addEventlistener	事件绑定 高版本
+addEventlistener	事件绑定
+attachEvent		事件绑定	IE8以下 包括IE8
+attachEvent		事件绑定
+
+解决IE7下文字被选中
+
+releaseCapture
+releaseCapture();
+
+addEventlistener阻止默认必须用这个 preventDefault
+
+attachEvent 不能用this
+
+
+addEventlistener(事件，函数，false)
+最后一个false也可以写true
+写false是冒泡
+写true是下沉（事件捕获）
+兼容高级浏览器
+有一个问题
+阻止默认事件不能用 return false
+解决方法：
+oEvent.preventDefault();
+
+attachEvent(on+事件，函数)
+兼容IE8级以下
+有问题
+不能用this
+
+IE7点击是字体不能被选中
+obj.releaseCaptrue&&obj.releaseCaptrue();
+
+
+obj.setCaptrue && obj.stCaptrue();
+
+
+addEvent (obj,sEv,fn){
+	if(obj.addEventlistener){
+		obj.addEventlistener(sEv,fn,false);
+	}else{
+		obj.attachEvent('on'+sEv,fn);
+	}
+}
+
+
+obj.releaseCaptrue&&obj.releaseCaptrue();
+obj.setCaptrue&&obj.setCaptrue();
+
+
+obj.releaseCaptrue && obj,releaseCaptrue();
+obj.setCaptrue && obk.setCaptrue();
+
+
+事件绑定
+obj.addEventListener(事件名，函数，false);
+
+false 指事件冒泡
+true 指事件下沉（事件捕获）
+addEventListener有问题
+清除默认时return false 无效
+解决办法：
+obj.perventDefault();
+
+obj.attachEvent('on'+事件名，函数)
+attachEvent问题： this不可用
+
+this出现问题：
+1.套一层
+2.定时器
+3.attachEvent
+4.行间
+
+
+
+obj.releaseCaptrue && obj.releaseCaptrue();
+obj.setCaptrue && obj.setCaptrue();
+
+
+require,exports,module
+require('');
+exports.a=12
+
+
+define(function(require,exports,module){
+	var A=require('a');
+	exports.a=funcion(){};
+});
+
+
+eval可以替代：
+new Function('return' + str)()
+
+
+new ActiveXObject('Microsoft.XMLHTTP') 兼容IE 6 7 8
+
+new XMLHttpRequest 除了IE6，通通兼容
+
+1.判断浏览器
+2.try{}catch(e){}
+3.in
+4.window.XMLHttpRequest
+
+异步:一个一个的来，	好多个操作可以同时进行
+同步：一起		前一个操作没有做完，后一个没法开
+
+3.发送请求
+1. oAjax.send();
+
+4.接收数据
+oAjax.onreadystatechange
+oAjax.readyState==4;
+
+//判断http的状态码，
+oAjax.status==200 && oAjax.status<300 || oAjax.status==304;
+
+//拿数据
+oAjax.responseText
+
+
+
+通信状态：readyState
+0	ajax对象准备完毕，未发送 	|| ajax对象准备完毕
+1	发送完成			|| 打开连接
+2	原始接收完成		|| 发送请求
+3	解析数据（解编码，解密）	|| 接收部分数据
+4	数据完成			|| 接收完整数据
+
+编码
+enCodeURIComponent();
+
+解码
+deCodeURIComponent();
+
+
+
+Mecrosoft.XMLHTTP
+
+
+Mecrosoft.XMLHTTP
+
+str.replace
+
+
+str.search(正则)  查找
+
+ignore	忽略大小写
+
+str.math()匹配，取出结果
+
+
+
+\d	digital	数字
+
+\g	global  所有
+
+\m	multi-line	多行模式
+
+
+修饰
+^	行首
+$	行尾
+
+^配合m来用，会自动识别字符串换行（换段）
+
+^不配合m来用，指的是整个字符串开头
+
+/a/img
+/a/gmi
+/a/mgi
+
+正则不在乎后面的顺序，只要有就添加这个
+
+
+过滤敏感词（替换）
+
+str.replace(要，谁)
+str.replace(正则，谁)
+str.replace(正则,fn)  //fn:回调函数，只关心定义，函数的返回值就是你替换的结果。
+
+方括号
+1./[abc]/	任意一个
+	/[a,b,c]/	a或者逗号或者b逗号或者c
+2.[a-z]	a到z，这个区间	
+
+3.[^abc]	排除
+	/[^d]/
+	/[^a]/	以字母a开头东西
+	/^[^a]/	以除了字母a开头东西
+
+/\d/一个数字
+量词：
+{n}	正好N个
+	/\d{500}/  500个数字
+
+{n,m}	最少n个，最多m个
+	正好2或者3位数:/\d{2,3}/
+
+
+{，m}	最少不限，最多M个  ×没有
+
+？	{0,1}可有可无
++	{1，}若干，最少一个，最多不限
+*	{0,}可以没有，有了也不限
+
+*** 量词，默认只负责前面一位
+
+转义：\
+\d  digital  数字：默认只取第一个数字
+\w  word     单词【a-z0-9_】
+\s  space    空格
+
+\D  非数字[^0-9]
+\W  非单词[^a-z0-9]
+\S  非空白
+.   r任意字符   js中是*
+\.  .本身
+\\  \本身
+
+校验：
+
+邮箱:
+\w+@[a-z0-9]+(\.[a-z]{2,8}){1,2}$;
+
+
+正则方法：
+reg.text(str);	//text有问题，只要有一部分符合要求，返回true
+	要配合^$使用
+
+
+区号：
+(0[1-9]\d\d?-)?
+
+
+号码：
+[2,8]\d{6,7}
+
+
+座机号码
+(0[1-9]\d\d?-)?[2,8]\d{6,7}
+
+
+秘籍：拆
+年龄：18-19
+/^(1[89]|[2-9]\d|100)$/
+
+行首行尾优先级比较高
+
+题目：
+1.请事先一个trim函数？过滤首尾空格的函数 
+
+2.输入框中只能输入数字
+
+
+
+*******技巧-批量加事件：
+	replace 像循环
+
+捕获，单独存一个
+	$1....$99
+	字符串里面应用捕获内容
+	RegExp.$1	分组的第一个内容
+	正则本身也需要用
+	在正则里面用的时候用\：var reg=/(w)(o)\2\1/;
+
+非捕获性分组
+	?:
+
+正向前瞻：
+	?=
+	/window(?=7)/	捕获一个带7的window
+	
+
+负向前瞻：
+	?!
+	/window(?!7)/	捕获后面不带7的window
+
+
+
+mvc:三层模式 三层架构 三层框架、
+	数据-交互	放在服务器下
+m	model模型		数据
+v	view视图			展示数据
+c	controllder控制器	中介
+
+mvc有什么好处？
+代码分离了-职责分离
+团队合作
+提高开发效率
+
+
+为什么需要mvc？
+
+mvc——核心：分离
+
+
+format(str,json)
+
+artTemplate
+
+
+
+mvc三层模式	分离
+
+设计模式：前辈总结出来可以解决一类问题办法（思路）
+	常见 23种
+		工厂模式
+		单体模式
+		观察者模式
+		门面模式
+		······
+
+
+
+mvc和设计模式没有关系
+
+
+课外题：mv*框架
+	angular	谷歌
+	backbone
+	knouckout
+	embed
+	vue
+	avalon
+	.......
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
